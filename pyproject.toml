@@ -39,3 +39,6 @@ target-version = "py310"
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]
+
+[project.scripts]
+dq-iot = "dq_framework.cli:main"
