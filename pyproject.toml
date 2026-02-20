@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dq-iot-framework"
+version = "0.1.0"
+description = "Config-driven data quality framework for industrial IoT sensor data (PySpark / Databricks-style)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Mouhab Dhieb" }]
+keywords = ["data-quality", "iot", "pyspark", "databricks", "dq"]
+dependencies = [
+  "pyspark>=3.5.0",
+  "pandas>=2.0.0",
+  "pyarrow>=14.0.0",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+  "ruff>=0.6.0",
+  "build>=1.2.0",
+  "twine>=6.0.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dq_framework"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
