@@ -1,0 +1,17 @@
+version: "v1"
+defaults:
+  expected_type: "double"
+  max_lateness_sec: 300          # 5 minutes
+  expected_frequency_sec: 60     # 1 reading per minute (demo)
+  severity: "warn"
+
+rules:
+  - tag: "temperature"
+    min_value: 0
+    max_value: 120
+  - tag: "pressure"
+    min_value: 0
+    max_value: 500
+  - tag: "vibration"
+    min_value: 0
+    max_value: 50
