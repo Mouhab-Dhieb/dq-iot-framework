@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-from pyspark.sql import DataFrame
+from pyspark.sql import DataFrame, Window
 from pyspark.sql import functions as F
-from pyspark.sql import Window
 
 
 def apply_row_level_checks(events: DataFrame, rules: DataFrame) -> DataFrame:
