@@ -5,8 +5,8 @@ from pathlib import Path
 
 from pyspark.sql import SparkSession
 
-from dq_framework.rules import load_rules_yaml, rules_to_dicts
 from dq_framework.checks import apply_row_level_checks
+from dq_framework.rules import load_rules_yaml, rules_to_dicts
 
 
 def build_spark(app_name: str = "dq-iot-framework") -> SparkSession:
@@ -19,7 +19,9 @@ def build_spark(app_name: str = "dq-iot-framework") -> SparkSession:
 
 def main() -> int:
     parser = argparse.ArgumentParser(prog="dq-iot", description="Run IoT data-quality checks.")
-    parser.add_argument("--input", required=True, help="Input path (parquet/delta) with IoT events.")
+    parser.add_argument(
+        "--input", required=True, help="Input path (parquet/delta) with IoT events."
+    )
     parser.add_argument("--rules", default="conf/rules.yml", help="Rules YAML path.")
     parser.add_argument("--out", default="out", help="Output folder.")
     args = parser.parse_args()
