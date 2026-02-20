@@ -15,7 +15,7 @@ def apply_row_level_checks(events: DataFrame, rules: DataFrame) -> DataFrame:
       - failure_reason (array<string>)
       - is_duplicate, out_of_range, too_late, cast_failed, null flags
     """
-    df = events.join(rules.where(F.col("enabled") == True), on="tag", how="left")
+    df = events.join(rules.where(F.col("enabled")), on="tag", how="left")
 
     # Null checks
     df = df.withColumn("is_null_sensor", F.col("sensor_id").isNull())
